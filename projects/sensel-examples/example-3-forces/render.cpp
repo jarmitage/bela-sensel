@@ -8,7 +8,7 @@
 #include <sensel_device.h>
 
 void setupSensel();
-void readSenselContacts(void*);
+void readSenselForces(void*);
 
 SENSEL_HANDLE handle = NULL; //Handle that references a Sensel device
 SenselDeviceList list; //List of all available Sensel devices
@@ -27,7 +27,7 @@ bool setup(BelaContext *context, void *userData)
 {
 	setupSensel();
 	
-	senselTask = Bela_createAuxiliaryTask(readSenselContacts, 50, "bela-sensel");
+	senselTask = Bela_createAuxiliaryTask(readSenselForces, 50, "bela-sensel");
 	readIntervalSamples = context->audioSampleRate / readInterval;
 	
 	return true;
@@ -50,8 +50,8 @@ void cleanup(BelaContext *context, void *userData)
 
 }
 
-// Auxiliary task to read the Sensel
-void readSenselContacts(void*)
+// Auxiliary task to read the Sensel force data
+void readSenselForces(void*)
 {
 	unsigned int num_frames = 0;
 	//Read all available data from the Sensel device
@@ -83,8 +83,8 @@ void setupSensel()
 
 	//Open a Sensel device by the id in the SenselDeviceList, handle initialized 
 	senselOpenDeviceByID(&handle, list.devices[0].idx);
-
 	senselGetSensorInfo(handle, &sensor_info); //Get the sensor info
+
 	senselSetFrameContent(handle, FRAME_CONTENT_PRESSURE_MASK); //Set the frame content to scan force data
 	senselAllocateFrameData(handle, &frame); //Allocate a frame of data, must be done before reading frame data
     senselStartScanning(handle); //Start scanning the Sensel device

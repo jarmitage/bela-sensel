@@ -49,7 +49,7 @@ void cleanup(BelaContext *context, void *userData)
 
 }
 
-// Auxiliary task to read the Sensel
+// Auxiliary task to read the Sensel contact data
 void readSenselContacts(void*)
 {
 	unsigned int num_frames = 0;
