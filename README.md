@@ -1,4 +1,4 @@
-# Bela x Sensel
+# Sensel Morph Bela examples
 
 This repo demonstrates how to use the Sensel Morph (http://sensel.com, a "multi-touch, highly sensitive, low power and mobile" pressure sensor, with Bela (http://bela.io), "the open source hardware and sofware platform for ultra-low latency sensor and audio processing".
 
@@ -6,7 +6,7 @@ This repo demonstrates how to use the Sensel Morph (http://sensel.com, a "multi-
 
 First, make sure your Sensel is functioning and up to date by installing the SenselApp and connecting to your device. Play with the SenselApp visualiser to get a feel for the Morph's capabilities.
 
-# Using Sensel Morph as a MIDI device with Bela
+# Using Sensel Morph as a MIDI device with Bela
 
 The simplest way to use Sensel Morph with Bela is as a MIDI device. Sensel Morph can be configured as a MIDI device from the SenselApp. Even if you don't have a musical overlay for Sensel Morph, you can set the "no overlay" default device behaviour to be MPE (for more on MPE MIDI see: [https://www.midi.org/articles/midi-polyphonic-expression-mpe](https://www.midi.org/articles/midi-polyphonic-expression-mpe)). Make sure you can see Sensel Morph's MIDI messages from your desktop machine (using e.g. MIDI Monitor for Mac).
 
@@ -22,7 +22,7 @@ Steps to install the Sensel API:
 
 - Connect your Bela to your computer, wait for it to boot, and open a terminal window
 - `ssh root@192.168.7.2`
-- `cd Bela; mkdir sensel ; cd sensel; git clone [https://github.com/sensel/s](https://github.com/sensel/sensel-api)ensel-api`
+- `cd Bela; mkdir sensel ; cd sensel; git clone https://github.com/sensel/sensel-api`
 - `sudo dpkg -i sensel-api/sensel-install/senselliblinux0.8.2-arm.deb`
 
 To use the Sensel library, add the following Make Parameter to your Bela project in the Bela Project Settings menu: `LDLIBS=-lsensel.`
